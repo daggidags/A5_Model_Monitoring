@@ -1,0 +1,6 @@
+[
+    {"text": "I loved the movie, it was amazing!", "true_label": "positive"},
+    {"text": "It was the worst film I’ve ever seen.", "true_label": "negative"},
+    {"text": "An excellent performance by the lead actor.", "true_label": "positive"},
+    {"text": "I wouldn’t recommend it to anyone.", "true_label": "negative"}
+]
