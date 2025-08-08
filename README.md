@@ -72,4 +72,60 @@ make.bat run
 ```
 
 This will:
-- Start the FastAPI cont
+- Start the FastAPI container on port **8000**
+- Start the Streamlit dashboard on port **8501**
+- Create a shared volume to store prediction logs
+
+## How to Use
+
+### Test the API
+
+You can use Swagger UI at:
+
+```
+http://localhost:8000/docs
+```
+
+Or send a request with `curl`:
+
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d "{\"text\": \"It was amazing!\", \"true_sentiment\": \"positive\"}"
+```
+
+### View the Monitoring Dashboard
+
+Open:
+
+```
+http://localhost:8501
+```
+
+The dashboard shows:
+- Sentence length drift (IMDB vs. incoming requests)
+- Target drift (predicted vs. true sentiment)
+- Accuracy and precision
+- A warning banner if accuracy drops below 80%
+
+##  Evaluate the Model (Optional)
+
+Run the evaluation script using provided `test_data.json`:
+
+```bash
+python evaluate.py
+```
+
+This will send a batch of requests to the API and print the model's accuracy.
+
+## Stop and Clean Everything
+
+Stop containers:
+```bash
+make.bat stop
+```
+
+Clean containers, images, volumes, and network:
+```bash
+make.bat clean
+```
